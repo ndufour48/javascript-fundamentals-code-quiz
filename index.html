@@ -2,13 +2,29 @@
 <html lang="en">
 
 <head>
-
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./assets/style.css" />
+    <title>JS Fundamentals Code Quiz</title>
 </head>
 
-
 <body>
+    <header>
+        <div id="score"><a>View High Scores</a></div>
+        <div id="timer">Timer: <span id="time">0</span></div>
+    </header>
+
+    <main> 
+        <h1>Welcome to the JavaScript Fundamentals Code Quiz!</h1>
+        <br>
+        <p>You will have 75 seconds to answer the following JavaScript related questions.</p>
+        <p>For each correct answer, you'll gain a point towards your highscore.</p>
+        <p>For each incorrect answer, you will lose 10 seconds on the timer.</p>
+        <p>If the timer hits 0, it's game over.</p>
+        <br>
+        <p><strong>Do your best to get the highscore!</strong></p>
+        <button id="startBtn">Start Quiz</button>
+    </main>
 
 </body>
-
 
 </html>

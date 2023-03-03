@@ -23,7 +23,54 @@
         <br>
         <p><strong>Do your best to get the highscore!</strong></p>
         <button id="startBtn">Start Quiz</button>
+
+        <!-- QUIZ CONTAINER -->
+        <div id="codeQuiz" style="display: none"> 
+            <form id="quizQuestions">
+                <div>
+                    <ul id="answerChoices">
+                        <div id="answerChoice" id="B" onclick="checkAnswer('B')"></div>
+                        <div id="answerChoice" id="A" onclick="checkAnswer('A')"></div>
+                        <div id="answerChoice" id="D" onclick="checkAnswer('D')"></div>
+                        <div id="answerChoice" id="C" onclick="checkAnswer('C')"></div>
+                    </ul>
+                </div>
+            </form>
+        </div>
+        
+        <!-- TIMER -->
+        <div id="quizTimer">
+            <div id="countdownTimer"></div>
+            <div id="time"></div>
+            <div id="userProgress"></div>
+        </div>
+        
+        <!-- RESULTS -->
+        <div id="quizResults">
+            <!-- JS to add "Finished" heading -->
+            <!-- JS to ask user to "Enter Initials: "
+            <form>
+            <span id="userScore">
+            <br>
+            use JS to ask user to "Enter initials: " -->
+            <!-- <input type="text" id="initials" />
+            <button id="submit"> Submit </button>
+            </form>
+            </span> -->
+        </div>
+        
+        <!-- HIGH SCORES -->
+        <div id="highScores">
+            <!-- Highscores heading -->
+            <ol id="highScoresList"></ol>
+            <!-- Reset button and clear scores button -->
+            <!-- <button id="resetBtn">Go Back</button>
+            <button id="clearBtn">Clear High Scores</button> -->
+        </div>
+        
     </main>
+
+    <script src="./script.js"></script>
 
 </body>
 

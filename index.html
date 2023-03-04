@@ -13,7 +13,8 @@
         <div id="timer">Timer: <span id="time">0</span></div>
     </header>
 
-    <main> 
+    <container> 
+    <div id="homeContainer">
         <h1>Welcome to the JavaScript Fundamentals Code Quiz!</h1>
         <br>
         <p>You will have 75 seconds to answer the following JavaScript related questions.</p>
@@ -23,9 +24,12 @@
         <br>
         <p><strong>Do your best to get the highscore!</strong></p>
         <button id="startBtn">Start Quiz</button>
+    </div>
+    </container>
+    
 
         <!-- QUIZ CONTAINER -->
-        <div id="codeQuiz" style="display: none"> 
+        <section id="quizContainer" style="display: none">
             <form id="quizQuestions">
                 <div>
                     <ul id="answerChoices">
@@ -44,31 +48,33 @@
             <div id="time"></div>
             <div id="userProgress"></div>
         </div>
+        </section>
         
         <!-- RESULTS -->
         <div id="quizResults">
             <!-- JS to add "Finished" heading -->
-            <!-- JS to ask user to "Enter Initials: "
-            <form>
-            <span id="userScore">
-            <br>
-            use JS to ask user to "Enter initials: " -->
-            <!-- <input type="text" id="initials" />
+
+            <form> <span id="userScore" style="display: none;"> <br>
+            
+            <input type="text" id="userInitials" placeholder="Enter your name">
+            <ul id="clasification" style="list-style: none;"></ul>
             <button id="submit"> Submit </button>
             </form>
-            </span> -->
+            </span>
         </div>
         
         <!-- HIGH SCORES -->
         <div id="highScores">
             <!-- Highscores heading -->
             <ol id="highScoresList"></ol>
+            <p id="score">Score</p>
+            <p id="quizTimeComplete">Time</p>
             <!-- Reset button and clear scores button -->
             <!-- <button id="resetBtn">Go Back</button>
             <button id="clearBtn">Clear High Scores</button> -->
+            <button type="button" onClick="refreshPage()">Go Back</button>
+            <button type="button" onClick="clearPage()">Clear High Scores</button>
         </div>
-        
-    </main>
 
     <script src="./script.js"></script>
 

@@ -9,12 +9,13 @@
 
 <body>
     <header>
-        <div id="score"><a>View High Scores</a></div>
-        <div id="timer">Timer: <span id="time">0</span></div>
+        <div id="displayHighScores"><a>View High Scores</a></div>
+        <div>Timer: <span id="countdownTimer"> 0</span></div>
     </header>
 
+    <!-- Home Container with quiz rules and Start button -->
     <container> 
-    <div id="homeContainer">
+    <div id="homeContainer" class="none">
         <h1>Welcome to the JavaScript Fundamentals Code Quiz!</h1>
         <br>
         <p>You will have 75 seconds to answer the following JavaScript related questions.</p>
@@ -26,57 +27,43 @@
         <button id="startBtn">Start Quiz</button>
     </div>
     </container>
-    
 
         <!-- QUIZ CONTAINER -->
         <section id="quizContainer" style="display: none">
-            <form id="quizQuestions">
-                <div>
-                    <ul id="answerChoices">
-                        <div id="answerChoice" id="B" onclick="checkAnswer('B')"></div>
-                        <div id="answerChoice" id="A" onclick="checkAnswer('A')"></div>
-                        <div id="answerChoice" id="D" onclick="checkAnswer('D')"></div>
-                        <div id="answerChoice" id="C" onclick="checkAnswer('C')"></div>
+            <h2 id="questionHeading"></h2>
+            <!-- <div id="answerChoices"> -->
+                <ul>
+                    <div id="choices">
+                        <button id="answerChoiceA"></button>
+                        </div>
+                        <div>
+                            <button id="answerChoiceB"></button>
+                        </div>
+                        <div>
+                            <button id="answerChoiceC"></button>
+                        </div>
+                        <div>
+                            <button id="answerChoiceD"></button>
+                        </div>
                     </ul>
-                </div>
-            </form>
-        </div>
-        
-        <!-- TIMER -->
-        <div id="quizTimer">
-            <div id="countdownTimer"></div>
-            <div id="time"></div>
-            <div id="userProgress"></div>
-        </div>
         </section>
-        
-        <!-- RESULTS -->
-        <div id="quizResults">
-            <!-- JS to add "Finished" heading -->
+<!-- High Scores container -->
+<div style="display: none" id = "highScores">
+    <h3 id = "highscoresHeading"></h3>
+</div>
 
-            <form> <span id="userScore" style="display: none;"> <br>
-            
-            <input type="text" id="userInitials" placeholder="Enter your name">
-            <ul id="clasification" style="list-style: none;"></ul>
-            <button id="submit"> Submit </button>
-            </form>
-            </span>
+<div style="display: none" id="enterHighScore">
+    <h1>All Done!</h1>
+    <h4 id="userScore"></h4>
+    <div class="input-group">
+        <input id="userName" type="text" placeholder="Your name" aria-label="Your name" aria-describedby="button-addon2">
+        <div class="input-group-append">
+        <button type="button" id="button-addon2">Add Name</button>
         </div>
-        
-        <!-- HIGH SCORES -->
-        <div id="highScores">
-            <!-- Highscores heading -->
-            <ol id="highScoresList"></ol>
-            <p id="score">Score</p>
-            <p id="quizTimeComplete">Time</p>
-            <!-- Reset button and clear scores button -->
-            <!-- <button id="resetBtn">Go Back</button>
-            <button id="clearBtn">Clear High Scores</button> -->
-            <button type="button" onClick="refreshPage()">Go Back</button>
-            <button type="button" onClick="clearPage()">Clear High Scores</button>
-        </div>
+    </div>
+</div>
 
-    <script src="./script.js"></script>
+    <script src="./assets/script.js"></script>
 
 </body>
 

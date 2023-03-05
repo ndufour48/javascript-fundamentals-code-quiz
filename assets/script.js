@@ -1,6 +1,6 @@
 // 1. When user clicks the start button, then a timer starts and I am presented with a question
 
-    // KEY VARIABLES: Declare variables 
+    // KEY VARIABLES: Declare global variables 
     var startBtn = document.getElementById("startBtn");
     var homeContainer =  document.getElementById("homeContainer");
     var quizContainer = document.getElementById("quizContainer");
@@ -12,24 +12,30 @@
     var answerChoiceC = document.getElementById("answerChoiceC");
     var answerChoiceD = document.getElementById("answerChoiceD");
     var correctAnswer = document.getElementById("correctAnswer");
-    var scoreDisplay = document.getElementById("userScore");
-    var finalTimeDisplay = document.getElementById("quizFinalTime");
-    var quizResults = document.getElementById("#quizResults");
-    var submit = document.getElementById("#submit");
+    // var scoreDisplay = document.getElementById("userScore");
+    // var scoreContainerEl = document.getElementById("ScoreContainer");
+    // var finalTimeDisplay = document.getElementById("quizFinalTime");
+    // var quizResults = document.getElementById("#quizResults");
+    // var submit = document.getElementById("#submit");
+    // let highScoreInput = document.getElementById("high-score-input");
+    var enterHighScore = document.getElementById("enterHighScore");
+    var userName = document.getElementById("userName");
+    var userScore = document.getElementById("userScore");
+    var displayHighScores = document.getElementById("displayHighScores");
 
 // QUESTIONS ARRAY:
 
 var questionsArray = [
 {
-    question: "Question 1: ?",
+    question: "Question: What is the HTML tag under which you can write the JavaScript code?",
     imageSrc: "",
-    answerChoice: ["a1", "b1", "c1", "d1"],
-    correctAnswer: 1
+    answerChoice: ["A) <javascript>", "B) <scripted>", "C) <script>", "D) <js>"],
+    correctAnswer: 2
 }, 
 {
-    question: "Question 2: ?",
+    question: "Question: Choose the correct JavaScript syntax to change the content of the following HTML code.",
     imageSrc: "",
-    answerChoice: ["a2", "b2", "c2", "d2"],
+    answerChoice: ["b1", "b2", "c2", "d2"],
     correctAnswer: 3
 },
 {
@@ -64,15 +70,15 @@ let i = 0;
 
 // COUNTDOWN TIMER FUNCTION: Use function to set countdown timer, interval and clear interval
 function setCountdownTimer() {
-    let countdown = setInterval(() => {
+    var countdownTimerInterval = setInterval(function (){
         secondsRemaining--;
-        countdownTimer.innerHTML = `Timer: ${secondsRemaining}`;
-    
-        if (secondsRemaining === 0) {
-            clearInterval(countdown);
+        countdownTimer.textContent = secondsRemaining + "seconds remaining";
+        if( secondsRemaining === 0) {
+            clearInterval(countdownTimerInterval);
+            gameOver();
         }
     }, 1000);
-}:
+};
 
 // START EVENT LISTENER: Add event listeners for when user clicks Start button to start countdown timer and quiz questions. 
 startBtn.addEventListener('click', function() {
@@ -103,21 +109,22 @@ function setQuizQuestions() {
 // Alert/Display message to user stating if theyir answer is correct or incorrect
     // Store user answer choices. Clear elements and update score count.
 
-    answerChoiceA.addEventListener('click', function(event) {
+answerChoiceA.addEventListener('click', function(event) {
 event.stopPropagation();
 let correctChoice = "";
 correctChoice = questionsArray[i].answer;
 console.log(correctChoice);
 if (i < questionsArray.length -1) {
     i++
-    alert("Correct")
 }
 if (event.target.textContent === correctChoice) {  
     setQuizQuestions();
     score++;
+    // displayMsg.innerHTML ="Correct! Nailed it!";
 } else {
     setQuizQuestions();
     secondsRemaining -= 5;
+    // displayMsg.innerHTML ="Incorrect! Better luck in the next one!";
 }
 console.log(score);
     });
@@ -133,11 +140,11 @@ console.log(score);
         if (event.target.textContent === correctChoice) { 
             setQuizQuestions();
             score++;
-            alert("Correct! Nailed it!");
+            // displayMsg.innerHTML ="Correct! Nailed it!";
         } else {
             setQuizQuestions();
             secondsRemaining -= 5;
-            alert("Incorrect! Better luck in the next one!");
+            // displayMsg.innerHTML ="Incorrect! Better luck in the next one!";
         }
         console.log(score);
     });
@@ -153,64 +160,22 @@ console.log(score);
         if (event.target.textContent === correctChoice) { 
             setQuizQuestions();
             score++;
-            alert("Correct! Nailed it!");
+            // displayMsg.innerHTML ="Correct! Nailed it!";
         } else {
             setQuizQuestions();
             secondsRemaining -= 5;
-        }
-        console.log(score);
-    });
-    
-    answerChoiceD.addEventListener('click', function(event) {
-        event.stopPropagation();
-        let correctChoice = "";
-        correctChoice = questionsArray[i].answerChoice;
-        console.log(correctChoice);
-        if (i < questionsArray.length -1) {
-            i++
-        }
-        if (event.target.textContent === correctChoice) { 
-            setQuizQuestions();
-            score++;
-            alert("Correct! Nailed it!");
-        } else {
-            setQuizQuestions();
-            secondsRemaining -= 5;
-            alert("Incorrect! Better luck in the next one!");
+            // displayMsg.innerHTML ="Incorrect! Better luck in the next one!";
         }
         console.log(score);
     });
 
-// 4. When all questions are answered or the timer reaches 0, then the game is over
-// use event delegation 
-// add condition of if timer reaches 0 to end game
-// render score during quiz         
-
-// // 5. When the game is over, then user can save initials and score
-  // Direct user to Results and Submit page
-  // clearInterval(timerInterval);
-  scoreContainer();
-
-  // SCORE PROGRESS
-function scoreContainer(){
-homeContainer.styledisplay = "none";
-quizContainer.style.display = "none";
-scoreDisplay.innerHTML = "You scored " + score + " points!";
-FinalTimeDisplay.innerHTML = "Code Quiz completed in " + quizTotalTime + " seconds";
+// Highscores page 
+var highscores = document.getElementById ("highScores");
+var highscoresHeading = document.getElementById ("highscoresHeading");
+function gameOver () {
+    if (secondsRemaining === 0) {
+        quizContainer.display.style = "none";
+        highscores.display.style = "block";
+        highscoresHeading.textContent = "Nice work! Your final score is " + score + " points! Head over to the highscores and enter your score and initials!";
+    }
 }
-
-// Set arrays for user input
-// Create a function that stores user's input (initials) in localStorage 
-// "Setters": Store array (localStorage.setItem) and Use JSON method (JON.string) to convert object into string from the user input array
-
-
-//     // Direct user to Highscores page
-//     // Create a Highscores function and set arrays that store user input in localStorage
-//     // "Getters": Store array (localStorage.getItem) and use JSON method (JON.parse) to convert string into object for high scores list data 
-//     // Then use a for loop of these arrays
-//     // Create a high scores list element and append it
-//     // Add an event listener for the submit button which submits and adds to score.
-//     // Display or alert total at the end (alert("You got " + score + "/" + questions.length);
-
-//     // Store in localStorage and re-render
-//         // Add buttons and functions to go back/refresh and a function and button to clear high scores.

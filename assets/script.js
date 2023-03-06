@@ -33,26 +33,26 @@ var questionsArray = [
     correctAnswer: 2
 }, 
 {
-    question: "Question: Choose the correct JavaScript syntax to change the content of the following HTML code.",
+    question: "Question: What are variables used for in JavaScript Programs?",
     imageSrc: "",
-    answerChoice: ["b1", "b2", "c2", "d2"],
-    correctAnswer: 3
+    answerChoice: ["A) Storing numbers, dates, or other values", "B) None of the above", "C) Varying randomly", "D) Causing high-school algebra flashbacks"],
+    correctAnswer: 0
 },
 {
-    question: "Question 3: ?",
+    question: "Question: Which method adds a new item to the end of an array and returns the new length?",
     imageSrc: "",
-    answerChoice: ["a3", "b3", "c3", "d3"],
+    answerChoice: ["A) push()", "B) return() ", "C) pop() ", "D) shift()"],
     correctAnswer: 0
 }, 
 {
-    question: "Question 4: ?",
+    question: "Question: Which of the following can't be done with client-side JavaScript?",
     imageSrc: "",
-    answerChoice: ["a4", "b4", "c4", "d4"],
-    correctAnswer: 2
+    answerChoice: ["A) Sending a form's contents by email", "B) Validating a form", "C) Storing the form's contents to a database file on the server", "D) None of the above"],
+    correctAnswer: 3
 },
 {
-    question: "Question 5: ?",
-    answerChoice: ["a5", "b5", "c5", "d5"],
+    question: "Question: Which of the following are capabilities of functions in JavaScript??",
+    answerChoice: ["A) Return a value", "B) Accept parameters", "C) Accept parameters and Return a value", "D) All of the above"],
     correctAnswer: 1
 }];
 
@@ -113,18 +113,18 @@ answerChoiceA.addEventListener('click', function(event) {
 event.stopPropagation();
 let correctChoice = "";
 correctChoice = questionsArray[i].answer;
-console.log(correctChoice);
+alert(correctChoice);
 if (i < questionsArray.length -1) {
     i++
 }
-if (event.target.textContent === correctChoice) {  
+if (event.target.textContent === correctChoice) { 
+    alert("Correct! Nailed it!");   
     setQuizQuestions();
     score++;
-    // displayMsg.innerHTML ="Correct! Nailed it!";
 } else {
     setQuizQuestions();
     secondsRemaining -= 5;
-    // displayMsg.innerHTML ="Incorrect! Better luck in the next one!";
+    alert("Incorrect! Better luck in the next one!");
 }
 console.log(score);
     });
@@ -137,14 +137,14 @@ console.log(score);
         if (i < questionsArray.length -1) {
             i++
         }
-        if (event.target.textContent === correctChoice) { 
+        if (event.target.textContent === correctChoice) {
+            console.log("Correct! Nailed it!");
             setQuizQuestions();
             score++;
-            // displayMsg.innerHTML ="Correct! Nailed it!";
         } else {
             setQuizQuestions();
             secondsRemaining -= 5;
-            // displayMsg.innerHTML ="Incorrect! Better luck in the next one!";
+            alert("Incorrect! Better luck in the next one!");
         }
         console.log(score);
     });
@@ -158,24 +158,45 @@ console.log(score);
             i++
         }
         if (event.target.textContent === correctChoice) { 
+            alert("Correct! Nailed it!");
             setQuizQuestions();
             score++;
-            // displayMsg.innerHTML ="Correct! Nailed it!";
         } else {
             setQuizQuestions();
             secondsRemaining -= 5;
-            // displayMsg.innerHTML ="Incorrect! Better luck in the next one!";
+            alert("Incorrect! Better luck in the next one!");
+        }
+        console.log(score);
+    });
+
+    answerChoiceD.addEventListener('click', function(event) {
+        event.stopPropagation();
+        let correctChoice = "";
+        correctChoice = questionsArray[i].answerChoice;
+        console.log(correctChoice);
+        if (i < questionsArray.length -1) {
+            i++
+        }
+        if (event.target.textContent === correctChoice) { 
+            console.log("Correct! Nailed it!");
+            setQuizQuestions();
+            score++;
+        } else {
+            setQuizQuestions();
+            secondsRemaining -= 5;
+            alert("Incorrect! Better luck in the next one!");
         }
         console.log(score);
     });
 
 // Highscores page 
-var highscores = document.getElementById ("highScores");
+var highscoresContainer = document.getElementById ("highScoresContainer");
 var highscoresHeading = document.getElementById ("highscoresHeading");
+
 function gameOver () {
     if (secondsRemaining === 0) {
         quizContainer.display.style = "none";
-        highscores.display.style = "block";
-        highscoresHeading.textContent = "Nice work! Your final score is " + score + " points! Head over to the highscores and enter your score and initials!";
+        highscoresContainer.display.style = "block";
+        highscoresHeading.innerHTML = "Nice work! Your final score is " + score + " points! Head over to the highscores and enter your score and initials!";
     }
 }
